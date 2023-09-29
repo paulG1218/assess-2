@@ -45,9 +45,11 @@ alertButton.addEventListener("click", () => {
 //   </ol>
 
 let listButton = document.querySelector("#item-adder")
+
 let list = document.querySelector("#list")
+
 listButton.addEventListener("dblclick", () => {
-    list.innerHTML += "<li>item</li>"
+    list.innerHTML += "<li>Item</li>"
 })
 
 // Change colors
@@ -124,7 +126,7 @@ let wordButton = document.querySelector("form#recommend-word button")
 let feedback = document.querySelector(".form-feedback")
 
 wordButton.addEventListener("click", (event) => {
-    
+
     let wordSug = document.querySelector("#word").value
 
     event.preventDefault()
