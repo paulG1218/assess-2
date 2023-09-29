@@ -13,7 +13,15 @@
 //     { firstName: 'Karlach', lastName: 'Cliffgate', location: 'Avernus' }
 //   ]);
 //   => ['Gale Dekarios', 'Wyll Ravengard', 'Karlach Cliffgate'];
-function getNames(people) {}
+function getNames(people) {
+  let newArr = []
+  for (let person of people) {
+    let F = person['firstName']
+    let L = person['lastName']
+    newArr.push(`${F} ${L}`)
+  }
+  return newArr
+}
 
 // Given an object representing a person, return their full name (first name and last name).
 // You MUST use object destructuring in your solution.
@@ -24,7 +32,10 @@ function getNames(people) {}
 // Ex.:
 //   getName({ firstName: 'Gale', lastName: 'Dekarios', location: 'Waterdeep' });
 //   => 'Gale Dekarios'
-function getNameUsingDestructuring(person) {}
+function getNameUsingDestructuring(person) {
+  const {firstName, lastName} = person
+  return `${firstName} ${lastName}`
+}
 
 // Given an array of objects representing people, return a new array of the
 // people matching the given location.
@@ -43,7 +54,14 @@ function getNameUsingDestructuring(person) {}
 //     { firstName: 'Wyll', lastName: 'Ravengard', location: "Baldur's Gate" },
 //     { firstName: 'Astarion', lastName: 'Ancunin', location: "Baldur's Gate" }
 //   ];
-function getPeopleByLocation(people, location) {}
+function getPeopleByLocation(people, location) {
+  let newArr = []
+  for (let person of people)
+  if (person.location === location) {
+    newArr.push(person)
+  }
+  return newArr
+}
 
 // Translate a phrase to pirate talk.
 //
@@ -72,7 +90,19 @@ const EN_PIRATE_LOOKUP = {
   hello: 'ahoy',
 };
 
-function translateToPirateTalk(phrase) {}
+function translateToPirateTalk(phrase) {
+  let str = ''
+  const pArr = phrase.split(" ")
+  for (let word of pArr) {
+    if (EN_PIRATE_LOOKUP[word]) {
+      str += EN_PIRATE_LOOKUP[word] + " "
+    } else {
+      str += word + " "
+    }
+  }
+  str = str.trim()
+  return str
+}
 
 // Return the number of occurrences of each word in a string.
 // This function doesn't handle punctuation and is case-sensitive, so you can
@@ -146,7 +176,21 @@ function isBugAvailable(bug, month) {}
 //     12: [],
 //   }
 
-function buildBugHuntCalendar(bugs) {}
+function buildBugHuntCalendar(bugs) {
+  let obj = {}
+  let arr = []
+  for (let i = 1; i <= 12; i++) {
+    for (let bug of bugs) {
+      if (bug["availability"]['months'].includes(i)) {
+        console.log(bug.name)
+        arr.push(bug.name)
+      }
+    }
+    obj[i] = arr
+    arr = []
+  }
+  return obj
+}
 
 export {
   buildBugHuntCalendar,
